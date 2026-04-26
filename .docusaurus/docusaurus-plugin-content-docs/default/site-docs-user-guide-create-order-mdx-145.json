@@ -1,0 +1,27 @@
+{
+  "id": "user-guide/create-order",
+  "title": "Оформление заказа",
+  "description": "На этой странице описан полный процесс оформления заказа в личном кабинете — от указания адресов",
+  "source": "@site/docs/user-guide/create-order.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/create-order",
+  "permalink": "/docs/user-guide/create-order",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "Оформление заказа"
+  },
+  "sidebar": "userGuideSidebar",
+  "previous": {
+    "title": "Отслеживание заказа",
+    "permalink": "/docs/user-guide/tracking"
+  },
+  "next": {
+    "title": "Оплата и тарифы",
+    "permalink": "/docs/user-guide/payment"
+  }
+}

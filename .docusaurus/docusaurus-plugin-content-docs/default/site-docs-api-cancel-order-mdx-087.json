@@ -1,0 +1,26 @@
+{
+  "id": "api/cancel-order",
+  "title": "Отмена заказа",
+  "description": "{/*",
+  "source": "@site/docs/api/cancel-order.mdx",
+  "sourceDirName": "api",
+  "slug": "/api/cancel-order",
+  "permalink": "/docs/api/cancel-order",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Отмена заказа",
+    "sidebar_label": "Отмена заказа"
+  },
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "Статус заказа",
+    "permalink": "/docs/api/get-order"
+  },
+  "next": {
+    "title": "Список услуг",
+    "permalink": "/docs/api/list-services"
+  }
+}

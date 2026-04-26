@@ -1,0 +1,365 @@
+openapi: 3.0.3
+info:
+  title: Экспресс сервис API
+  description: |
+    REST API для интеграции с курьерской службой **Экспресс сервис**.
+
+    Позволяет:
+    - создавать заказы на доставку;
+    - отслеживать статус заказа;
+    - получать список доступных услуг и тарифов.
+
+    ## Аутентификация
+
+    Все запросы требуют заголовок `Authorization: Bearer <токен>`.
+    Токен генерируется в личном кабинете: **Профиль → API → Сгенерировать токен**.
+
+    ## Формат дат
+
+    Все даты и время указываются по московскому времени (UTC+3)
+    в формате `ДД.ММ.ГГГГ ЧЧ:ММ`, например: `25.03.2025 14:30`.
+
+  version: 1.0.0
+  contact:
+    email: api-support@express-service.test
+
+servers:
+  - url: https://api.express-service.test/v1
+    description: Продакшн
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: orders
+    description: Управление заказами
+  - name: services
+    description: Доступные услуги и тарифы
+
+paths:
+  /orders:
+    post:
+      tags:
+        - orders
+      summary: Создание заказа
+      description: |
+        Создаёт новый заказ на доставку. В ответ возвращается уникальный идентификатор
+        заказа и его начальный статус `accepted`.
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+            example:
+              sender:
+                name: Иванов Иван Иванович
+                phone: "+7-900-123-45-67"
+                address: "Москва, ул. Ленина, 1, кв. 10"
+              recipient:
+                name: Петрова Анна Сергеевна
+                phone: "+7-900-765-43-21"
+                address: "Москва, пр. Мира, 42, офис 301"
+              weight: 1.5
+              service_type: express
+      responses:
+        '201':
+          description: Заказ успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderResponse'
+              example:
+                id: "ORD-20250325-00042"
+                status: accepted
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /orders/{id}:
+    get:
+      tags:
+        - orders
+      summary: Статус заказа
+      description: |
+        Возвращает текущий статус заказа и прогнозируемое время доставки.
+        Время в поле `estimated_delivery` указано по московскому времени (UTC+3)
+        в формате `ДД.ММ.ГГГГ ЧЧ:ММ`.
+      operationId: getOrder
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Идентификатор заказа, полученный при создании
+          schema:
+            type: string
+            example: "ORD-20250325-00042"
+      responses:
+        '200':
+          description: Информация о заказе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderStatus'
+              example:
+                id: "ORD-20250325-00042"
+                status: in_transit
+                estimated_delivery: "25.03.2025 17:00"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /services:
+    get:
+      tags:
+        - services
+      summary: Список услуг
+      description: |
+        Возвращает список доступных видов доставки с названиями и базовыми тарифами.
+        Итоговая стоимость рассчитывается при оформлении заказа с учётом веса и расстояния.
+      operationId: listServices
+      security: []
+      responses:
+        '200':
+          description: Список доступных услуг
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+              example:
+                - id: standart
+                  name: Стандарт
+                  price: 250
+                  description: Доставка на следующий рабочий день
+                - id: express
+                  name: Экспресс
+                  price: 490
+                  description: Доставка за 2–4 часа
+                - id: overnight
+                  name: Ночная
+                  price: 350
+                  description: Забор после 18:00, доставка к 9:00 утра
+                - id: intercity
+                  name: Межгород
+                  price: 750
+                  description: Доставка по области за 1–3 рабочих дня
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Токен аутентификации. Получите в личном кабинете:
+        **Профиль → API → Сгенерировать токен**.
+
+  schemas:
+    ContactInfo:
+      type: object
+      required:
+        - name
+        - phone
+        - address
+      properties:
+        name:
+          type: string
+          description: Полное имя или название организации
+          example: Иванов Иван Иванович
+        phone:
+          type: string
+          description: Телефон в формате +7-XXX-XXX-XX-XX
+          example: "+7-900-123-45-67"
+        address:
+          type: string
+          description: Полный адрес (город, улица, дом, квартира/офис)
+          example: "Москва, ул. Ленина, 1, кв. 10"
+
+    CreateOrderRequest:
+      type: object
+      required:
+        - sender
+        - recipient
+        - weight
+        - service_type
+      properties:
+        sender:
+          $ref: '#/components/schemas/ContactInfo'
+          description: Данные отправителя
+        recipient:
+          $ref: '#/components/schemas/ContactInfo'
+          description: Данные получателя
+        weight:
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 30
+          description: Вес посылки в килограммах
+          example: 1.5
+        service_type:
+          type: string
+          enum:
+            - standart
+            - express
+            - overnight
+            - intercity
+          description: |
+            Тип доставки:
+            - `standart` — Стандарт (следующий день)
+            - `express` — Экспресс (2–4 часа)
+            - `overnight` — Ночная (к утру)
+            - `intercity` — Межгород (по области)
+          example: express
+
+    CreateOrderResponse:
+      type: object
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор заказа (трек-номер)
+          example: "ORD-20250325-00042"
+        status:
+          type: string
+          description: Начальный статус заказа
+          example: accepted
+
+    OrderStatus:
+      type: object
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+          description: Идентификатор заказа
+          example: "ORD-20250325-00042"
+        status:
+          type: string
+          enum:
+            - accepted
+            - waiting_courier
+            - picked_up
+            - in_transit
+            - delivered
+            - failed_delivery
+            - returned
+          description: |
+            Текущий статус заказа:
+            - `accepted` — принят
+            - `waiting_courier` — ожидает курьера
+            - `picked_up` — забран у отправителя
+            - `in_transit` — в пути к получателю
+            - `delivered` — доставлен
+            - `failed_delivery` — не удалось доставить
+            - `returned` — возврат отправителю
+          example: in_transit
+        estimated_delivery:
+          type: string
+          description: |
+            Прогнозируемое время доставки по московскому времени (UTC+3)
+            в формате `ДД.ММ.ГГГГ ЧЧ:ММ`.
+          example: "25.03.2025 17:00"
+
+    Service:
+      type: object
+      required:
+        - id
+        - name
+        - price
+      properties:
+        id:
+          type: string
+          description: Идентификатор услуги
+          example: express
+        name:
+          type: string
+          description: Название услуги на русском языке
+          example: Экспресс
+        price:
+          type: integer
+          description: Базовая стоимость доставки в рублях (без учёта веса и расстояния)
+          example: 490
+        description:
+          type: string
+          description: Краткое описание условий доставки
+          example: Доставка за 2–4 часа
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Код ошибки
+          example: VALIDATION_ERROR
+        message:
+          type: string
+          description: Описание ошибки на русском языке
+          example: Поле weight обязательно
+        details:
+          type: array
+          items:
+            type: string
+          description: Дополнительные сведения об ошибке
+          example:
+            - "weight: должно быть больше 0"
+            - "service_type: недопустимое значение"
+
+  responses:
+    BadRequest:
+      description: Некорректный запрос — ошибка валидации входных данных
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: VALIDATION_ERROR
+            message: Ошибка валидации входных данных
+            details:
+              - "weight: значение должно быть от 0.1 до 30"
+
+    Unauthorized:
+      description: Отсутствует или недействителен токен аутентификации
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: UNAUTHORIZED
+            message: Токен аутентификации отсутствует или недействителен
+
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: NOT_FOUND
+            message: Заказ с указанным идентификатором не найден
+
+    InternalServerError:
+      description: Внутренняя ошибка сервера
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: INTERNAL_ERROR
+            message: Внутренняя ошибка сервера. Попробуйте повторить запрос позже

@@ -1,0 +1,79 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "user-guide/quick-start",
+          "docs": [
+            {
+              "id": "api/cancel-order",
+              "path": "/docs/api/cancel-order",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/create-order",
+              "path": "/docs/api/create-order",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/get-order",
+              "path": "/docs/api/get-order",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/list-services",
+              "path": "/docs/api/list-services",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "api/overview",
+              "path": "/docs/api/overview",
+              "sidebar": "apiSidebar"
+            },
+            {
+              "id": "user-guide/create-order",
+              "path": "/docs/user-guide/create-order",
+              "sidebar": "userGuideSidebar"
+            },
+            {
+              "id": "user-guide/payment",
+              "path": "/docs/user-guide/payment",
+              "sidebar": "userGuideSidebar"
+            },
+            {
+              "id": "user-guide/quick-start",
+              "path": "/docs/user-guide/quick-start",
+              "sidebar": "userGuideSidebar"
+            },
+            {
+              "id": "user-guide/tracking",
+              "path": "/docs/user-guide/tracking",
+              "sidebar": "userGuideSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "userGuideSidebar": {
+              "link": {
+                "path": "/docs/user-guide/quick-start",
+                "label": "Быстрый старт"
+              }
+            },
+            "apiSidebar": {
+              "link": {
+                "path": "/docs/api/overview",
+                "label": "Обзор API"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

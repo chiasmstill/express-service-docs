@@ -1,0 +1,24 @@
+{
+  "id": "api/list-services",
+  "title": "Список услуг",
+  "description": "<ApiPlayground",
+  "source": "@site/docs/api/list-services.mdx",
+  "sourceDirName": "api",
+  "slug": "/api/list-services",
+  "permalink": "/docs/api/list-services",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Список услуг",
+    "sidebar_label": "Список услуг",
+    "sidebar_position": 4
+  },
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "Отмена заказа",
+    "permalink": "/docs/api/cancel-order"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "user-guide/account",
+  "title": "Личный кабинет",
+  "description": "В личном кабинете вы управляете заказами, настраиваете уведомления и следите за историей доставок.",
+  "source": "@site/docs/user-guide/account.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/account",
+  "permalink": "/docs/user-guide/account",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Личный кабинет"
+  },
+  "sidebar": "userGuideSidebar",
+  "previous": {
+    "title": "Оплата и тарифы",
+    "permalink": "/docs/user-guide/payment"
+  }
+}

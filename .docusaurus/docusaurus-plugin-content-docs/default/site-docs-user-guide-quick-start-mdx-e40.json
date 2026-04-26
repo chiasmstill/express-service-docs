@@ -1,0 +1,23 @@
+{
+  "id": "user-guide/quick-start",
+  "title": "Быстрый старт",
+  "description": "Экспресс сервис — курьерская служба для доставки документов и посылок по городу и области.",
+  "source": "@site/docs/user-guide/quick-start.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/quick-start",
+  "permalink": "/docs/user-guide/quick-start",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "Быстрый старт"
+  },
+  "sidebar": "userGuideSidebar",
+  "next": {
+    "title": "Отслеживание заказа",
+    "permalink": "/docs/user-guide/tracking"
+  }
+}

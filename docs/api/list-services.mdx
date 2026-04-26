@@ -1,0 +1,56 @@
+---
+title: Список услуг
+sidebar_label: Список услуг
+sidebar_position: 4
+---
+
+import ApiPlayground from '@site/src/components/ApiPlayground';
+import ParamsTable from '@site/src/components/ParamsTable';
+
+<div className="api-playground-panel">
+  <ApiPlayground
+    method="GET"
+    endpoint="/services"
+    authRequired={false}
+    mockStatus={200}
+    mockResponse={[
+      { id: 'standart',  name: 'Стандарт', price: 250, description: 'Доставка на следующий рабочий день' },
+      { id: 'express',   name: 'Экспресс', price: 490, description: 'Доставка за 2–4 часа' },
+      { id: 'overnight', name: 'Ночная',   price: 350, description: 'Забор после 18:00, доставка к 9:00' },
+      { id: 'intercity', name: 'Межгород', price: 750, description: 'По области за 1–3 рабочих дня' },
+    ]}
+  />
+</div>
+
+# Список услуг
+
+**Метод:** `GET /services` · **Авторизация:** не требуется
+
+Возвращает список всех доступных видов доставки с названиями, описаниями и базовыми тарифами.
+Метод открытый — его можно вызывать без токена, чтобы показать пользователю варианты
+перед оформлением заказа.
+
+Итоговая стоимость рассчитывается при создании заказа (`POST /orders`) с учётом веса и расстояния.
+
+## Пример запроса
+
+```http
+GET https://api.express-service.test/v1/services
+```
+
+## Ответ — 200 OK
+
+Ответ — массив объектов. Каждый объект описывает один вид доставки:
+
+<ParamsTable params={[
+  { name: 'id',          type: 'string',  description: 'Идентификатор услуги. Передаётся в поле service_type при создании заказа через POST /orders.', example: 'express', enum: ['standart', 'express', 'overnight', 'intercity'] },
+  { name: 'name',        type: 'string',  description: 'Название услуги на русском языке', example: 'Экспресс' },
+  { name: 'price',       type: 'integer', description: 'Базовая стоимость доставки в рублях. Итоговая сумма рассчитывается при создании заказа с учётом веса и расстояния.', example: 490 },
+  { name: 'description', type: 'string',  description: 'Краткое описание условий доставки', example: 'Доставка за 2–4 часа' },
+]} />
+
+## Коды ошибок
+
+<ParamsTable params={[
+  { name: '500', type: 'error', description: 'Внутренняя ошибка сервера' },
+]} />

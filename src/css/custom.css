@@ -1,0 +1,53 @@
+/**
+ * Кастомные стили для «Экспресс сервис»
+ * Акцентный цвет — зелёный (#2e8b57)
+ */
+
+/* ── API method pages: playground floats right ── */
+.api-playground-panel {
+  float: right;
+  width: 360px;
+  margin: 0 0 2rem 2.5rem;
+  position: sticky;
+  top: 80px;
+  /* sticky + float работает, если родитель не overflow:hidden */
+}
+
+/* Clearfix: статья содержит float */
+.theme-doc-markdown::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 1100px) {
+  .api-playground-panel {
+    float: none;
+    width: 100%;
+    margin: 0 0 2rem 0;
+    position: static;
+  }
+}
+
+:root {
+  --ifm-color-primary: #2e8b57;
+  --ifm-color-primary-dark: #298050;
+  --ifm-color-primary-darker: #27794b;
+  --ifm-color-primary-darkest: #20643e;
+  --ifm-color-primary-light: #33965e;
+  --ifm-color-primary-lighter: #359b63;
+  --ifm-color-primary-lightest: #3db371;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4fd98a;
+  --ifm-color-primary-dark: #3fd280;
+  --ifm-color-primary-darker: #38cf7b;
+  --ifm-color-primary-darkest: #2ab569;
+  --ifm-color-primary-light: #5fe094;
+  --ifm-color-primary-lighter: #66e399;
+  --ifm-color-primary-lightest: #7eeaaa;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

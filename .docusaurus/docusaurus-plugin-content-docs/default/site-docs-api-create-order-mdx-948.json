@@ -1,0 +1,28 @@
+{
+  "id": "api/create-order",
+  "title": "Создание заказа",
+  "description": "<ApiPlayground",
+  "source": "@site/docs/api/create-order.mdx",
+  "sourceDirName": "api",
+  "slug": "/api/create-order",
+  "permalink": "/docs/api/create-order",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Создание заказа",
+    "sidebar_label": "Создание заказа",
+    "sidebar_position": 2
+  },
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "Обзор API",
+    "permalink": "/docs/api/overview"
+  },
+  "next": {
+    "title": "Статус заказа",
+    "permalink": "/docs/api/get-order"
+  }
+}

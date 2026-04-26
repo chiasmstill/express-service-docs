@@ -1,0 +1,27 @@
+{
+  "id": "user-guide/tracking",
+  "title": "Отслеживание посылки",
+  "description": "После оформления заказа вы можете следить за его статусом в режиме реального времени.",
+  "source": "@site/docs/user-guide/tracking.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/tracking",
+  "permalink": "/docs/user-guide/tracking",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "title": "Отслеживание посылки"
+  },
+  "sidebar": "userGuideSidebar",
+  "previous": {
+    "title": "Быстрый старт",
+    "permalink": "/docs/user-guide/quick-start"
+  },
+  "next": {
+    "title": "Оформление заказа",
+    "permalink": "/docs/user-guide/create-order"
+  }
+}

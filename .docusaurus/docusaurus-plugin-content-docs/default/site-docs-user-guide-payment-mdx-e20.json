@@ -1,0 +1,23 @@
+{
+  "id": "user-guide/payment",
+  "title": "Оплата и тарифы",
+  "description": "На этой странице описаны тарифы на доставку, доступные способы оплаты и условия возврата средств.",
+  "source": "@site/docs/user-guide/payment.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/payment",
+  "permalink": "/docs/user-guide/payment",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "Оплата и тарифы"
+  },
+  "sidebar": "userGuideSidebar",
+  "previous": {
+    "title": "Оформление заказа",
+    "permalink": "/docs/user-guide/create-order"
+  }
+}

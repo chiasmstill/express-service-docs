@@ -1,0 +1,83 @@
+---
+title: Отмена заказа
+sidebar_label: Отмена заказа
+# sidebar_position = 5
+---
+
+import ApiPlayground from '@site/src/components/ApiPlayground';
+import ParamsTable from '@site/src/components/ParamsTable';
+
+<div className="api-playground-panel">
+{/*
+  <ApiPlayground
+    method="DELETE"
+    endpoint="/orders/{id}"
+    authRequired=true
+    pathParams={[
+      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, defaultValue: 'ORD-20250325-00042', hint: 'Трек-номер заказа' },
+    ]}
+    mockStatus={200}
+    mockResponse={{ id: 'ORD-20250325-00042', status: 'cancelled' }}
+  />
+*/}
+  <ApiPlayground
+    method="DELETE"
+    endpoint="/orders/{id}"
+    authRequired={true}
+    pathParams={[
+      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, defaultValue: 'ORD-20250325-00042', hint: 'Трек-номер заказа' },
+    ]}
+    mockStatus={200}
+    mockResponse={{ id: 'ORD-20250325-00042', status: 'cancelled' }}
+  />
+</div>
+
+# Отмена заказа
+
+**Метод:** `DELETE /orders/{id}` · **Авторизация:** обязательна
+
+Отменяет заказ по трек-номеру. Отмена возможна только если заказ находится
+в статусе `accepted` или `waiting_courier` — то есть до момента,
+когда курьер забрал посылку у отправителя.
+
+## Заголовки
+
+<ParamsTable params={[
+  { name: 'Authorization', type: 'string', required: true, in: 'header', description: 'Токен доступа', example: 'Bearer ваш_токен' },
+]} />
+
+## Path-параметры
+
+<ParamsTable param={[
+  { name: 'id', type: 'string', required: true, in: 'path', description: 'Трек-номер заказа, полученный при создании', example: 'ORD-20250325-00042' },
+]} />
+
+## Пример запроса
+
+{/*
+````http
+DELETE https://api.express-service.test/v1/orders/ORD-20250325-00042
+Authorization: Bearer <ваш_токен>
+```
+*/}
+
+```http
+DELETE https://api.express-service.test/v1/orders/ORD-20250325-00042
+Authorization: Bearer <ваш_токен>
+```
+
+## Ответ — 200 OK
+
+<ParamsTable params={[
+  { name: 'id',     type: 'string', description: 'Трек-номер отменённого заказа', example: 'ORD-20250325-00042' },
+  { name: 'status', type: 'string', description: 'Новый статус заказа — всегда cancelled после успешной отмены', example: 'cancelled' },
+]} />
+
+## Коды ошибок
+
+<ParamsTable params={[
+  { name: '400', type: 'error', description: 'Заказ нельзя отменить — он уже передан курьеру или доставлен' },
+  { name: '401', type: 'error', description: 'Токен авторизации отсутствует или недействителен' },
+  { name: '404', type: 'error', description: 'Заказ с указанным id не найден' },
+  { name: '500', type: 'error', description: 'Внутренняя ошибка сервера — попробуйте повторить запрос позже' },
+]} />

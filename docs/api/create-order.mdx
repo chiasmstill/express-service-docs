@@ -1,0 +1,105 @@
+---
+title: Создание заказа
+sidebar_label: Создание заказа
+sidebar_position: 2
+---
+
+import ApiPlayground from '@site/src/components/ApiPlayground';
+import ParamsTable from '@site/src/components/ParamsTable';
+
+<div className="api-playground-panel">
+  <ApiPlayground
+    method="POST"
+    endpoint="/orders"
+    authRequired={true}
+    bodyFields={[
+      { name: 'sender.name',    placeholder: 'Иванов Иван Иванович',          required: true, defaultValue: 'Иванов Иван Иванович' },
+      { name: 'sender.phone',   placeholder: '+7-900-123-45-67',               required: true, defaultValue: '+7-900-123-45-67' },
+      { name: 'sender.address', placeholder: 'Москва, ул. Ленина, 1, кв. 10', required: true, defaultValue: 'Москва, ул. Ленина, 1, кв. 10' },
+      { name: 'recipient.name',    placeholder: 'Петрова Анна Сергеевна',       required: true, defaultValue: 'Петрова Анна Сергеевна' },
+      { name: 'recipient.phone',   placeholder: '+7-900-765-43-21',             required: true, defaultValue: '+7-900-765-43-21' },
+      { name: 'recipient.address', placeholder: 'Москва, пр. Мира, 42, офис 301', required: true, defaultValue: 'Москва, пр. Мира, 42, офис 301' },
+      { name: 'weight',       type: 'number', placeholder: '1.5',    required: true, defaultValue: '1.5', hint: 'В килограммах (0.1–30)' },
+      { name: 'service_type', type: 'select', required: true, defaultValue: 'express', options: ['standart', 'express', 'overnight', 'intercity'] },
+    ]}
+    mockStatus={201}
+    mockResponse={{ id: 'ORD-20250325-00042', status: 'accepted' }}
+  />
+</div>
+
+# Создание заказа
+
+**Метод:** `POST /orders` · **Авторизация:** обязательна
+
+Создаёт новый заказ на доставку. В запросе нужно передать данные отправителя, получателя,
+вес посылки и тип доставки. В ответ сервис вернёт уникальный трек-номер заказа и начальный
+статус `accepted`.
+
+## Заголовки
+
+<ParamsTable params={[
+  { name: 'Authorization', type: 'string', required: true, in: 'header', description: 'Токен доступа', example: 'Bearer ваш_токен' },
+  { name: 'Content-Type',  type: 'string', required: true, in: 'header', description: 'Формат тела запроса', example: 'application/json' },
+]} />
+
+## Тело запроса
+
+<ParamsTable title="sender — данные отправителя" params={[
+  { name: 'sender.name',    type: 'string', required: true, description: 'Полное имя или название организации', example: 'Иванов Иван Иванович' },
+  { name: 'sender.phone',   type: 'string', required: true, description: 'Телефон в формате +7-XXX-XXX-XX-XX', example: '+7-900-123-45-67' },
+  { name: 'sender.address', type: 'string', required: true, description: 'Полный адрес: город, улица, дом, квартира/офис', example: 'Москва, ул. Ленина, 1, кв. 10' },
+]} />
+
+<ParamsTable title="recipient — данные получателя" params={[
+  { name: 'recipient.name',    type: 'string', required: true, description: 'Полное имя или название организации', example: 'Петрова Анна Сергеевна' },
+  { name: 'recipient.phone',   type: 'string', required: true, description: 'Телефон получателя — курьер позвонит за 30 мин до прибытия', example: '+7-900-765-43-21' },
+  { name: 'recipient.address', type: 'string', required: true, description: 'Адрес доставки', example: 'Москва, пр. Мира, 42, офис 301' },
+]} />
+
+<ParamsTable title="параметры посылки" params={[
+  { name: 'weight',       type: 'number', required: true, description: 'Вес посылки в килограммах', example: 1.5, constraints: 'Минимум: 0.1 · Максимум: 30' },
+  { name: 'service_type', type: 'string', required: true, description: 'Тип доставки. Влияет на скорость, стоимость и ограничения по весу.', example: 'express', enum: [
+    { value: 'standart',  description: 'Следующий рабочий день, до 30 кг' },
+    { value: 'express',   description: 'За 2–4 часа в пределах города, до 5 кг' },
+    { value: 'overnight', description: 'Забор после 18:00, доставка к 9:00' },
+    { value: 'intercity', description: 'По области за 1–3 рабочих дня' },
+  ] },
+]} />
+
+## Пример запроса
+
+```http
+POST https://api.express-service.test/v1/orders
+Authorization: Bearer <ваш_токен>
+Content-Type: application/json
+
+{
+  "sender": {
+    "name": "Иванов Иван Иванович",
+    "phone": "+7-900-123-45-67",
+    "address": "Москва, ул. Ленина, 1, кв. 10"
+  },
+  "recipient": {
+    "name": "Петрова Анна Сергеевна",
+    "phone": "+7-900-765-43-21",
+    "address": "Москва, пр. Мира, 42, офис 301"
+  },
+  "weight": 1.5,
+  "service_type": "express"
+}
+```
+
+## Ответ — 201 Created
+
+<ParamsTable params={[
+  { name: 'id',     type: 'string', description: 'Уникальный трек-номер заказа', example: 'ORD-20250325-00042' },
+  { name: 'status', type: 'string', description: 'Начальный статус — всегда accepted после создания', example: 'accepted' },
+]} />
+
+## Коды ошибок
+
+<ParamsTable params={[
+  { name: '400', type: 'error', description: 'Ошибка валидации — проверьте обязательные поля и форматы данных' },
+  { name: '401', type: 'error', description: 'Токен авторизации отсутствует или недействителен' },
+  { name: '500', type: 'error', description: 'Внутренняя ошибка сервера — попробуйте повторить запрос позже' },
+]} />

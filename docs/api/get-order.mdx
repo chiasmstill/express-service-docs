@@ -1,0 +1,76 @@
+---
+title: Статус заказа
+sidebar_label: Статус заказа
+sidebar_position: 3
+---
+
+import ApiPlayground from '@site/src/components/ApiPlayground';
+import ParamsTable from '@site/src/components/ParamsTable';
+
+<div className="api-playground-panel">
+  <ApiPlayground
+    method="GET"
+    endpoint="/orders/{id}"
+    authRequired={true}
+    pathParams={[
+      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, defaultValue: 'ORD-20250325-00042', hint: 'Трек-номер заказа' },
+    ]}
+    mockStatus={200}
+    mockResponse={{
+      id: 'ORD-20250325-00042',
+      status: 'in_transit',
+      estimated_delivery: '25.03.2025 17:00',
+    }}
+  />
+</div>
+
+# Статус заказа
+
+**Метод:** `GET /orders/{id}` · **Авторизация:** обязательна
+
+Возвращает текущий статус заказа и прогнозируемое время доставки.
+Используйте трек-номер (`id`), полученный при создании заказа.
+
+## Заголовки
+
+<ParamsTable params={[
+  { name: 'Authorization', type: 'string', required: true, in: 'header', description: 'Токен доступа', example: 'Bearer ваш_токен' },
+]} />
+
+## Path-параметры
+
+<ParamsTable params={[
+  { name: 'id', type: 'string', required: true, in: 'path', description: 'Трек-номер заказа, полученный при создании', example: 'ORD-20250325-00042' },
+]} />
+
+## Пример запроса
+
+```http
+GET https://api.express-service.test/v1/orders/ORD-20250325-00042
+Authorization: Bearer <ваш_токен>
+```
+
+## Ответ — 200 OK
+
+<ParamsTable params={[
+  { name: 'id',                 type: 'string', description: 'Трек-номер заказа, полученный при создании', example: 'ORD-20250325-00042' },
+  { name: 'status', type: 'string', description: 'Текущий статус заказа', example: 'in_transit', enum: [
+    { value: 'accepted',        description: 'Заказ принят, ожидает назначения курьера' },
+    { value: 'waiting_courier', description: 'Курьер назначен и выезжает к отправителю' },
+    { value: 'picked_up',       description: 'Курьер забрал посылку' },
+    { value: 'in_transit',      description: 'Посылка в пути к получателю' },
+    { value: 'delivered',       description: 'Доставлено' },
+    { value: 'failed_delivery', description: 'Не удалось доставить, будет повторная попытка через 2 часа' },
+    { value: 'returned',        description: 'Возврат отправителю' },
+  ] },
+  { name: 'estimated_delivery', type: 'string', description: 'Прогнозируемое время доставки. Формат: ДД.ММ.ГГГГ ЧЧ:ММ, московское время (UTC+3). Обновляется каждые 15 минут.', example: '25.03.2025 17:00' },
+]} />
+
+
+## Коды ошибок
+
+<ParamsTable params={[
+  { name: '401', type: 'error', description: 'Токен авторизации отсутствует или недействителен' },
+  { name: '404', type: 'error', description: 'Заказ с указанным id не найден' },
+  { name: '500', type: 'error', description: 'Внутренняя ошибка сервера' },
+]} />

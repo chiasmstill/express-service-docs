@@ -1,0 +1,260 @@
+/* ─── Hero ─────────────────────────────────────────────────────────────────── */
+
+.heroBanner {
+  background: linear-gradient(140deg, #0d3321 0%, #1a5c38 55%, #2e8b57 100%);
+  padding: 5rem 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative glow */
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.heroContent {
+  text-align: center;
+  padding-bottom: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 100px;
+  padding: 0.3rem 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heroTagline {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 1rem;
+  font-weight: 400;
+}
+
+.heroDescription {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+}
+
+.btnPrimary {
+  background: #ffffff !important;
+  color: #1a5c38 !important;
+  border: none !important;
+  font-weight: 700 !important;
+  transition: transform 0.18s, box-shadow 0.18s !important;
+}
+
+.btnPrimary:hover {
+  background: #f0fbf5 !important;
+  color: #0d3321 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+.btnSecondary {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.55) !important;
+  font-weight: 600 !important;
+  transition: background 0.18s, border-color 0.18s !important;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+}
+
+/* ─── Stats bar ─────────────────────────────────────────────────────────────── */
+
+.heroStats {
+  background: rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.6rem 0;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 4rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.3rem;
+}
+
+/* ─── How it works ──────────────────────────────────────────────────────────── */
+
+.howItWorks {
+  padding: 5rem 0;
+  background: #f6fdf9;
+}
+
+[data-theme='dark'] .howItWorks {
+  background: #1b1b1d;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: #667;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+[data-theme='dark'] .sectionSubtitle {
+  color: #aaa;
+}
+
+.stepsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stepCard {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 2px 14px rgba(46, 139, 87, 0.07);
+  border: 1px solid rgba(46, 139, 87, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stepCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(46, 139, 87, 0.14);
+}
+
+[data-theme='dark'] .stepCard {
+  background: #242526;
+  border-color: rgba(79, 217, 138, 0.14);
+}
+
+.stepNum {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2e8b57, #3db371);
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.stepTitle {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.stepDesc {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: #555;
+  margin: 0;
+}
+
+[data-theme='dark'] .stepDesc {
+  color: #aaa;
+}
+
+/* ─── Bottom CTA ────────────────────────────────────────────────────────────── */
+
+.bottomCta {
+  padding: 5rem 0;
+  text-align: center;
+  background: linear-gradient(140deg, #1a5c38, #2e8b57);
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.ctaSubtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.25rem;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    padding: 3rem 0 0;
+  }
+
+  .statsRow {
+    gap: 1.25rem 2.5rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+}
