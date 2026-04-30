@@ -108,6 +108,15 @@
   border-color: var(--ifm-color-primary);
 }
 
+.inputError {
+  border-color: #e53e3e !important;
+}
+
+.fieldError {
+  font-size: 11px;
+  color: #e53e3e;
+}
+
 .tokenField {
   padding: 10px 16px;
   background: #fffbeb;

@@ -58,6 +58,12 @@
           ],
           "draftIds": [],
           "sidebars": {
+            "mainSidebar": {
+              "link": {
+                "path": "/docs/user-guide/quick-start",
+                "label": "Быстрый старт"
+              }
+            },
             "userGuideSidebar": {
               "link": {
                 "path": "/docs/user-guide/quick-start",

@@ -16,7 +16,7 @@ import styles from './styles.module.css';
  *   default?:      any
  * }
  */
-export default function ParamsTable({ title, params, defaultOpen = true }) {
+export default function ParamsTable({ title, params = [], defaultOpen = true }) {
   const content = (
     <>
       {params.map(param => (

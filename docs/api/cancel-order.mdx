@@ -25,7 +25,7 @@ import ParamsTable from '@site/src/components/ParamsTable';
     endpoint="/orders/{id}"
     authRequired={true}
     pathParams={[
-      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, defaultValue: 'ORD-20250325-00042', hint: 'Трек-номер заказа' },
+      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, hint: 'Трек-номер заказа' },
     ]}
     mockStatus={200}
     mockResponse={{ id: 'ORD-20250325-00042', status: 'cancelled' }}
@@ -48,7 +48,7 @@ import ParamsTable from '@site/src/components/ParamsTable';
 
 ## Path-параметры
 
-<ParamsTable param={[
+<ParamsTable params={[
   { name: 'id', type: 'string', required: true, in: 'path', description: 'Трек-номер заказа, полученный при создании', example: 'ORD-20250325-00042' },
 ]} />
 

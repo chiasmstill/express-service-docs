@@ -13,14 +13,14 @@ import ParamsTable from '@site/src/components/ParamsTable';
     endpoint="/orders"
     authRequired={true}
     bodyFields={[
-      { name: 'sender.name',    placeholder: 'Иванов Иван Иванович',          required: true, defaultValue: 'Иванов Иван Иванович' },
-      { name: 'sender.phone',   placeholder: '+7-900-123-45-67',               required: true, defaultValue: '+7-900-123-45-67' },
-      { name: 'sender.address', placeholder: 'Москва, ул. Ленина, 1, кв. 10', required: true, defaultValue: 'Москва, ул. Ленина, 1, кв. 10' },
-      { name: 'recipient.name',    placeholder: 'Петрова Анна Сергеевна',       required: true, defaultValue: 'Петрова Анна Сергеевна' },
-      { name: 'recipient.phone',   placeholder: '+7-900-765-43-21',             required: true, defaultValue: '+7-900-765-43-21' },
-      { name: 'recipient.address', placeholder: 'Москва, пр. Мира, 42, офис 301', required: true, defaultValue: 'Москва, пр. Мира, 42, офис 301' },
-      { name: 'weight',       type: 'number', placeholder: '1.5',    required: true, defaultValue: '1.5', hint: 'В килограммах (0.1–30)' },
-      { name: 'service_type', type: 'select', required: true, defaultValue: 'express', options: ['standart', 'express', 'overnight', 'intercity'] },
+      { name: 'sender.name',    placeholder: 'Иванов Иван Иванович',          required: true },
+      { name: 'sender.phone',   type: 'phone', placeholder: '+7-900-123-45-67',               required: true },
+      { name: 'sender.address', placeholder: 'Москва, ул. Ленина, 1, кв. 10', required: true },
+      { name: 'recipient.name',    placeholder: 'Петрова Анна Сергеевна',         required: true },
+      { name: 'recipient.phone',   type: 'phone', placeholder: '+7-900-765-43-21',               required: true },
+      { name: 'recipient.address', placeholder: 'Москва, пр. Мира, 42, офис 301', required: true },
+      { name: 'weight',       type: 'number', placeholder: '1.5',    required: true, hint: 'В килограммах (0.1–30)' },
+      { name: 'service_type', type: 'select', required: true, options: ['standart', 'express', 'overnight', 'intercity'] },
     ]}
     mockStatus={201}
     mockResponse={{ id: 'ORD-20250325-00042', status: 'accepted' }}
