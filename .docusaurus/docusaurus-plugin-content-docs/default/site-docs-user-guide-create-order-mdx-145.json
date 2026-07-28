@@ -17,11 +17,11 @@
   },
   "sidebar": "userGuideSidebar",
   "previous": {
-    "title": "Отслеживание заказа",
-    "permalink": "/docs/user-guide/tracking"
+    "title": "Личный кабинет",
+    "permalink": "/docs/user-guide/account"
   },
   "next": {
-    "title": "Оплата и тарифы",
-    "permalink": "/docs/user-guide/payment"
+    "title": "Отслеживание заказа",
+    "permalink": "/docs/user-guide/tracking"
   }
 }

@@ -24,11 +24,11 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "C:\\Users\\user\\Documents\\study-repo\\express-service-docs\\sidebars.js"
+          "sidebarPath": "D:\\git\\express-service-docs\\sidebars.js"
         },
         "blog": false,
         "theme": {
-          "customCss": "C:\\Users\\user\\Documents\\study-repo\\express-service-docs\\src\\css\\custom.css"
+          "customCss": "D:\\git\\express-service-docs\\src\\css\\custom.css"
         }
       }
     ]

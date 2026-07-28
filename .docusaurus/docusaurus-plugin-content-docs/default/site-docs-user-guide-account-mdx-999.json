@@ -17,7 +17,11 @@
   },
   "sidebar": "userGuideSidebar",
   "previous": {
-    "title": "Оплата и тарифы",
-    "permalink": "/docs/user-guide/payment"
+    "title": "Быстрый старт",
+    "permalink": "/docs/user-guide/quick-start"
+  },
+  "next": {
+    "title": "Оформление заказа",
+    "permalink": "/docs/user-guide/create-order"
   }
 }

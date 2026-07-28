@@ -17,7 +17,7 @@
   },
   "sidebar": "userGuideSidebar",
   "next": {
-    "title": "Отслеживание заказа",
-    "permalink": "/docs/user-guide/tracking"
+    "title": "Личный кабинет",
+    "permalink": "/docs/user-guide/account"
   }
 }

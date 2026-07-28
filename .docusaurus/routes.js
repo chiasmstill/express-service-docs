@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'e12'),
+    component: ComponentCreator('/docs', 'c30'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'e02'),
+        component: ComponentCreator('/docs', '3a5'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '645'),
+            component: ComponentCreator('/docs', '452'),
             routes: [
               {
                 path: '/docs/api/cancel-order',
@@ -80,6 +80,12 @@ export default [
                 sidebar: "apiSidebar"
               },
               {
+                path: '/docs/user-guide/account',
+                component: ComponentCreator('/docs/user-guide/account', '082'),
+                exact: true,
+                sidebar: "userGuideSidebar"
+              },
+              {
                 path: '/docs/user-guide/create-order',
                 component: ComponentCreator('/docs/user-guide/create-order', 'c7f'),
                 exact: true,
@@ -87,7 +93,18 @@ export default [
               },
               {
                 path: '/docs/user-guide/payment',
-                component: ComponentCreator('/docs/user-guide/payment', '705'),
+                component: ComponentCreator('/docs/user-guide/payment', 'aed'),
+                exact: true
+              },
+              {
+                path: '/docs/user-guide/payment-business',
+                component: ComponentCreator('/docs/user-guide/payment-business', '2d3'),
+                exact: true,
+                sidebar: "userGuideSidebar"
+              },
+              {
+                path: '/docs/user-guide/payment-individuals',
+                component: ComponentCreator('/docs/user-guide/payment-individuals', 'b44'),
                 exact: true,
                 sidebar: "userGuideSidebar"
               },

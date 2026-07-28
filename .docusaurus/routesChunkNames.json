@@ -42,17 +42,17 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/docs-e12": {
+  "/docs-c30": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-e02": {
+  "/docs-3a5": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
-  "/docs-645": {
+  "/docs-452": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/docs/api/cancel-order-0e9": {
@@ -75,13 +75,25 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-api-overview-6-e-6-27d"
   },
+  "/docs/user-guide/account-082": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-user-guide-account-999-aac"
+  },
   "/docs/user-guide/create-order-c7f": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-user-guide-create-order-145-6e7"
   },
-  "/docs/user-guide/payment-705": {
+  "/docs/user-guide/payment-aed": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-user-guide-paymente-20-494"
+  },
+  "/docs/user-guide/payment-business-2d3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-user-guide-payment-business-42-f-0cf"
+  },
+  "/docs/user-guide/payment-individuals-b44": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-user-guide-payment-individualse-32-32a"
   },
   "/docs/user-guide/quick-start-609": {
     "__comp": "__comp---theme-doc-item-178-a40",

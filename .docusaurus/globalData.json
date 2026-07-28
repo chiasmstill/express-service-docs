@@ -36,13 +36,27 @@
               "sidebar": "apiSidebar"
             },
             {
+              "id": "user-guide/account",
+              "path": "/docs/user-guide/account",
+              "sidebar": "userGuideSidebar"
+            },
+            {
               "id": "user-guide/create-order",
               "path": "/docs/user-guide/create-order",
               "sidebar": "userGuideSidebar"
             },
             {
               "id": "user-guide/payment",
-              "path": "/docs/user-guide/payment",
+              "path": "/docs/user-guide/payment"
+            },
+            {
+              "id": "user-guide/payment-business",
+              "path": "/docs/user-guide/payment-business",
+              "sidebar": "userGuideSidebar"
+            },
+            {
+              "id": "user-guide/payment-individuals",
+              "path": "/docs/user-guide/payment-individuals",
               "sidebar": "userGuideSidebar"
             },
             {

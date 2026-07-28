@@ -17,11 +17,11 @@
   },
   "sidebar": "userGuideSidebar",
   "previous": {
-    "title": "Быстрый старт",
-    "permalink": "/docs/user-guide/quick-start"
-  },
-  "next": {
     "title": "Оформление заказа",
     "permalink": "/docs/user-guide/create-order"
+  },
+  "next": {
+    "title": "Оплата - физические лица",
+    "permalink": "/docs/user-guide/payment-individuals"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "id": "user-guide/payment-individuals",
+  "title": "Оплата - физические лица",
+  "description": "Тарифная таблица",
+  "source": "@site/docs/user-guide/payment-individuals.mdx",
+  "sourceDirName": "user-guide",
+  "slug": "/user-guide/payment-individuals",
+  "permalink": "/docs/user-guide/payment-individuals",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Оплата - физические лица"
+  },
+  "sidebar": "userGuideSidebar",
+  "previous": {
+    "title": "Отслеживание заказа",
+    "permalink": "/docs/user-guide/tracking"
+  },
+  "next": {
+    "title": "Оплата - юридические лица",
+    "permalink": "/docs/user-guide/payment-business"
+  }
+}

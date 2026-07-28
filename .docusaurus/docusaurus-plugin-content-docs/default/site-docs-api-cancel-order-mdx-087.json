@@ -1,7 +1,7 @@
 {
   "id": "api/cancel-order",
   "title": "Отмена заказа",
-  "description": "{/*",
+  "description": "<ApiPlayground",
   "source": "@site/docs/api/cancel-order.mdx",
   "sourceDirName": "api",
   "slug": "/api/cancel-order",
@@ -10,9 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 5,
   "frontMatter": {
     "title": "Отмена заказа",
-    "sidebar_label": "Отмена заказа"
+    "sidebar_label": "Отмена заказа",
+    "sidebar_position": 5
   },
   "sidebar": "apiSidebar",
   "previous": {

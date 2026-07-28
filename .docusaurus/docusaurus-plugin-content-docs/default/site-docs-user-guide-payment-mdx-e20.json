@@ -14,10 +14,5 @@
   "frontMatter": {
     "sidebar_position": 4,
     "title": "Оплата и тарифы"
-  },
-  "sidebar": "userGuideSidebar",
-  "previous": {
-    "title": "Оформление заказа",
-    "permalink": "/docs/user-guide/create-order"
   }
 }
