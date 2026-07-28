@@ -1,35 +1,25 @@
 ---
 title: Отмена заказа
 sidebar_label: Отмена заказа
-# sidebar_position = 5
+sidebar_position : 5
 ---
 
 import ApiPlayground from '@site/src/components/ApiPlayground';
 import ParamsTable from '@site/src/components/ParamsTable';
 
 <div className="api-playground-panel">
-{/*
+
   <ApiPlayground
     method="DELETE"
     endpoint="/orders/{id}"
-    authRequired=true
+    authRequired={true}
     pathParams={[
       { name: 'id', placeholder: 'ORD-20250325-00042', required: true, defaultValue: 'ORD-20250325-00042', hint: 'Трек-номер заказа' },
     ]}
     mockStatus={200}
     mockResponse={{ id: 'ORD-20250325-00042', status: 'cancelled' }}
   />
-*/}
-  <ApiPlayground
-    method="DELETE"
-    endpoint="/orders/{id}"
-    authRequired={true}
-    pathParams={[
-      { name: 'id', placeholder: 'ORD-20250325-00042', required: true, hint: 'Трек-номер заказа' },
-    ]}
-    mockStatus={200}
-    mockResponse={{ id: 'ORD-20250325-00042', status: 'cancelled' }}
-  />
+
 </div>
 
 # Отмена заказа
@@ -54,17 +44,11 @@ import ParamsTable from '@site/src/components/ParamsTable';
 
 ## Пример запроса
 
-{/*
-````http
-DELETE https://api.express-service.test/v1/orders/ORD-20250325-00042
-Authorization: Bearer <ваш_токен>
-```
-*/}
-
 ```http
 DELETE https://api.express-service.test/v1/orders/ORD-20250325-00042
 Authorization: Bearer <ваш_токен>
 ```
+
 
 ## Ответ — 200 OK
 
