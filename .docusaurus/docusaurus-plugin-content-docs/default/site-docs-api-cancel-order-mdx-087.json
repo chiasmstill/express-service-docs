@@ -18,8 +18,8 @@
   },
   "sidebar": "apiSidebar",
   "previous": {
-    "title": "Статус заказа",
-    "permalink": "/docs/api/get-order"
+    "title": "История отслеживания заказа",
+    "permalink": "/docs/api/tracking-history"
   },
   "next": {
     "title": "Список услуг",

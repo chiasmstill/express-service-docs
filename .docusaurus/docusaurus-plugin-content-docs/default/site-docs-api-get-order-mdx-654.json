@@ -22,7 +22,7 @@
     "permalink": "/docs/api/create-order"
   },
   "next": {
-    "title": "Отмена заказа",
-    "permalink": "/docs/api/cancel-order"
+    "title": "История отслеживания заказа",
+    "permalink": "/docs/api/tracking-history"
   }
 }

@@ -36,6 +36,11 @@
               "sidebar": "apiSidebar"
             },
             {
+              "id": "api/tracking-history",
+              "path": "/docs/api/tracking-history",
+              "sidebar": "apiSidebar"
+            },
+            {
               "id": "user-guide/account",
               "path": "/docs/user-guide/account",
               "sidebar": "userGuideSidebar"
