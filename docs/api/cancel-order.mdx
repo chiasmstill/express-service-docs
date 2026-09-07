@@ -60,8 +60,10 @@ Authorization: Bearer <ваш_токен>
 ## Коды ошибок
 
 <ParamsTable params={[
-  { name: '400', type: 'error', description: 'Заказ нельзя отменить — он уже передан курьеру или доставлен' },
+  { name: '400', type: 'error', description: 'Ошибка запроса' },
   { name: '401', type: 'error', description: 'Токен авторизации отсутствует или недействителен' },
   { name: '404', type: 'error', description: 'Заказ с указанным id не найден' },
+  { name: '422', type: 'error', description: 'Заказ нельзя отменить — он уже передан курьеру или доставлен' },
+  { name: '429', type: 'error', description: 'Превышен лимит запросов - повторите запрос позже' },
   { name: '500', type: 'error', description: 'Внутренняя ошибка сервера — попробуйте повторить запрос позже' },
 ]} />
