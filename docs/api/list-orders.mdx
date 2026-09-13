@@ -1,0 +1,96 @@
+---
+title: Список заказов
+sidebar_label: Список заказов
+sidebar_position: 1
+---
+
+import ApiPlayground from '@site/src/components/ApiPlayground';
+import ParamsTable from '@site/src/components/ParamsTable';
+
+<div className="api-playground-panel">
+  <ApiPlayground
+    method="GET"
+    endpoint="/orders"
+    authRequired={true}
+    queryParams={[
+      { name: 'status', type: 'string', required: false, placeholder: 'in_transit', hint: 'Фильтр по статусу заказа' },
+      { name: 'from', type: 'string', required: false, placeholder: '01.01.2025', hint: 'Начало периода (формат: ДД.ММ.ГГГГ)' },
+      { name: 'to', type: 'string', required: false, placeholder: '31.12.2025', hint: 'Конец периода (формат: ДД.ММ.ГГГГ)' },
+      { name: 'limit', type: 'integer', required: false, placeholder: '20', hint: 'Количество записей на странице (по умолчанию 20, макс. 100)' },
+      { name: 'offset', type: 'integer', required: false, placeholder: '0', hint: 'Смещение (по умолчанию 0)' },
+    ]}
+    mockStatus={200}
+    mockResponse={{
+    orders: [
+      { id: 'ORD-20250325-00042', status: 'in_transit', created_at: '25.03.2025 10:00' },
+      { id: 'ORD-20250325-00043', status: 'delivered', created_at: '24.03.2025 15:30' },
+    ],
+    total: 2,
+  }}
+  />
+</div>
+
+# Список заказов
+
+**Метод:** `GET /orders` · **Авторизация:** обязательна
+
+Возвращает список заказов текущего пользователя с фильтрацией и пагинацией.
+
+## Query-параметры
+
+<ParamsTable params={[
+  { name: 'status', type: 'string', required: false, in: 'query', description: 'Фильтр по статусу заказа. Возможные значения: accepted, waiting_courier, picked_up, in_transit, delivered, failed_delivery, returned', example: 'in_transit' },
+  { name: 'from', type: 'string', required: false, in: 'query', description: 'Начало периода (формат: ДД.ММ.ГГГГ)', example: '01.01.2025' },
+  { name: 'to', type: 'string', required: false, in: 'query', description: 'Конец периода (формат: ДД.ММ.ГГГГ)', example: '31.12.2025' },
+  { name: 'limit', type: 'integer', required: false, in: 'query', description: 'Количество записей на странице (по умолчанию 20, минимум 1, максимум 100)', example: '20' },
+  { name: 'offset', type: 'integer', required: false, in: 'query', description: 'Смещение (по умолчанию 0)', example: '0' },
+]} />
+
+## Пример запроса
+
+```http
+GET https://api.express-service.test/v1/orders?status=in_transit&limit=10
+Authorization: Bearer <ваш_токен>
+```
+
+
+## Ответ — 200 OK
+
+```json
+{
+  "total": 142,
+  "limit": 10,
+  "offset": 0,
+  "items": [
+    { "id": "ORD-20250325-00042", "status": "in_transit", "service_type": "express", "created_at": "25.03.2025 10:00" },
+    { "id": "ORD-20250324-00038", "status": "in_transit", "service_type": "standart", "created_at": "24.03.2025 14:20" }
+  ]
+}
+```
+
+
+<ParamsTable params={[
+{ name: 'total', type: 'integer', description: 'Общее количество заказов по заданным фильтрам', example: '142' },
+{ name: 'limit', type: 'integer', description: 'Количество записей в ответе', example: '10' },
+{ name: 'offset', type: 'integer', description: 'Текущее смещение', example: '0' },
+{ name: 'items', type: 'array', description: 'Массив заказов' },
+{ name: 'items[].id', type: 'string', description: 'Трек-номер заказа', example: 'ORD-20250325-00042' },
+{ name: 'items[].status', type: 'string', description: 'Текущий статус заказа', example: 'in_transit' },
+{ name: 'items[].service_type', type: 'string', description: 'Тип услуги доставки', example: 'express' },
+{ name: 'items[].created_at', type: 'string', description: 'Дата создания заказа (формат: ДД.ММ.ГГГГ ЧЧ:ММ)', example: '25.03.2025 10:00' },
+]} />
+
+
+:::note
+Чтобы получить следующую страницу, увеличьте значение `offset` на значение `limit`. Например, если `limit=10` и `offset=0`, следующая страница будет `offset=10`.
+:::
+
+
+## Коды ошибок
+
+<ParamsTable params={[
+{ name: '400', type: 'error', description: 'Неверные параметры запроса' },
+{ name: '401', type: 'error', description: 'Токен авторизации отсутствует или недействителен' },
+{ name: '503', type: 'error', description: 'Сервис временно недоступен — попробуйте позже' },
+]} />
+

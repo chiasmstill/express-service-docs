@@ -6,6 +6,7 @@ const apiSidebar = [
     label: 'Заказы',
     collapsed: false,
     items: [
+      { type: 'doc', id: 'api/list-orders', label: 'Список заказов' }
       { type: 'doc', id: 'api/create-order', label: 'Создание заказа' },
       { type: 'doc', id: 'api/get-order', label: 'Статус заказа' },
       { type: 'doc', id: 'api/tracking-history', label: 'История отслеживания заказа' },

@@ -75,7 +75,26 @@ Authorization: Bearer <ваш_токен>
 
 <ParamsTable params={[
 { name: 'id', type: 'string', description: 'Трек-номер заказа', example: 'ORD-20250325-00042' },
-{ name: 'status', type: 'string', description: 'Текущий статус заказа', example: 'in_transit' },
+{
+  name: 'status',
+  type: 'string',
+  description: (
+    <>
+      Текущий статус заказа.
+      <br />
+      Возможные значения:
+      <ul>
+        <li><code>accepted</code> — заказ принят в обработку</li>
+        <li><code>waiting_courier</code> — ожидание назначения курьера</li>
+        <li><code>picked_up</code> — посылка забрана у отправителя</li>
+        <li><code>in_transit</code> — в пути к получателю</li>
+        <li><code>delivered</code> — доставлен получателю</li>
+        <li><code>cancelled</code> — заказ отменён</li>
+      </ul>
+    </>
+  ),
+  example: 'in_transit'
+},
 { name: 'events', type: 'array', description: 'Хронологический список событий' },
 { name: 'events[].status', type: 'string', description: 'Статус на момент события' },
 { name: 'events[].timestamp', type: 'string', description: 'Время события (формат: ДД.ММ.ГГГГ ЧЧ:ММ, UTC+3)' },
