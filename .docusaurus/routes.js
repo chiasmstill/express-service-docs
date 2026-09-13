@@ -39,15 +39,15 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'c78'),
+    component: ComponentCreator('/docs', 'e0b'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '5d8'),
+        component: ComponentCreator('/docs', '909'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'e52'),
+            component: ComponentCreator('/docs', 'b93'),
             routes: [
               {
                 path: '/docs/api/cancel-order',
@@ -64,6 +64,12 @@ export default [
               {
                 path: '/docs/api/get-order',
                 component: ComponentCreator('/docs/api/get-order', 'ee6'),
+                exact: true,
+                sidebar: "apiSidebar"
+              },
+              {
+                path: '/docs/api/list-orders',
+                component: ComponentCreator('/docs/api/list-orders', 'c53'),
                 exact: true,
                 sidebar: "apiSidebar"
               },

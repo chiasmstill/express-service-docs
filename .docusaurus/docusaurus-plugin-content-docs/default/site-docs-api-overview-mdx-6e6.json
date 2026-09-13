@@ -17,7 +17,7 @@
   },
   "sidebar": "apiSidebar",
   "next": {
-    "title": "Создание заказа",
-    "permalink": "/docs/api/create-order"
+    "title": "Список заказов",
+    "permalink": "/docs/api/list-orders"
   }
 }

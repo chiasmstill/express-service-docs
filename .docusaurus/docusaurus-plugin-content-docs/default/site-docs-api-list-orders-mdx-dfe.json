@@ -1,0 +1,28 @@
+{
+  "id": "api/list-orders",
+  "title": "Список заказов",
+  "description": "<ApiPlayground",
+  "source": "@site/docs/api/list-orders.mdx",
+  "sourceDirName": "api",
+  "slug": "/api/list-orders",
+  "permalink": "/docs/api/list-orders",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Список заказов",
+    "sidebar_label": "Список заказов",
+    "sidebar_position": 1
+  },
+  "sidebar": "apiSidebar",
+  "previous": {
+    "title": "Обзор API",
+    "permalink": "/docs/api/overview"
+  },
+  "next": {
+    "title": "Создание заказа",
+    "permalink": "/docs/api/create-order"
+  }
+}

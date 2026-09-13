@@ -18,8 +18,8 @@
   },
   "sidebar": "apiSidebar",
   "previous": {
-    "title": "Обзор API",
-    "permalink": "/docs/api/overview"
+    "title": "Список заказов",
+    "permalink": "/docs/api/list-orders"
   },
   "next": {
     "title": "Статус заказа",

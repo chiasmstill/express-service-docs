@@ -26,6 +26,11 @@
               "sidebar": "apiSidebar"
             },
             {
+              "id": "api/list-orders",
+              "path": "/docs/api/list-orders",
+              "sidebar": "apiSidebar"
+            },
+            {
               "id": "api/list-services",
               "path": "/docs/api/list-services",
               "sidebar": "apiSidebar"
